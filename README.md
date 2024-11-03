@@ -9,6 +9,7 @@
    - [Setup](#setup-1)
    - [Project Structure](#project-structure-1)
    - [Features](#features)
+3. [Recording](#recording)
 
 ## Backend (Flask)
 
@@ -153,5 +154,5 @@
    - **Subtask**: Users can create/update/delete/complete/expand&collapse subtasks. Subtasks cannot be moved around.
 
 
-## Recordings
-<iframe src="https://www.loom.com/embed/8455756e85a945ea9b668652abd3c7ff?sid=16b93682-05b5-4772-bda2-99b43c8e07dd" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width:100%;height:400px;"></iframe>
+## Recording
+[Watch the video on Loom](https://www.loom.com/share/8455756e85a945ea9b668652abd3c7ff?sid=16b93682-05b5-4772-bda2-99b43c8e07dd)
