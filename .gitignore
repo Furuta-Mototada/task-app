@@ -1,0 +1,27 @@
+# Flask
+app-flask/venv/
+app-flask/instance/
+app-flask/project/__pycache__/
+app-flask/project/*.pyc
+app-flask/project/*.pyo
+app-flask/project/*.pyd
+app-flask/project/*.log
+app-flask/project/*.sqlite
+app-flask/.env
+
+# React
+app-react/node_modules/
+app-react/build/
+app-react/.env.local
+app-react/.env.development.local
+app-react/.env.test.local
+app-react/.env.production.local
+app-react/npm-debug.log*
+app-react/yarn-debug.log*
+app-react/yarn-error.log*
+
+# General
+.DS_Store
+*.log
+*.swp
+*.swo

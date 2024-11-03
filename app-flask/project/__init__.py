@@ -25,7 +25,7 @@ def create_app():
         app,
         resources={r"/api/*": {"origins": "http://localhost:3000"}},
         supports_credentials=True,
-        methods=["GET", "POST", "PUT", "DELETE"],
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     )
 
     from .models import User
@@ -52,5 +52,8 @@ def create_app():
         with app.app_context():
             db.create_all()
         print("Initialized the database.")
+
+    with app.app_context():
+        db.create_all()  # Initialize the database
 
     return app

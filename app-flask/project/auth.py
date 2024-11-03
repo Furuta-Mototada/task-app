@@ -9,7 +9,7 @@ from flask_login import (
     current_user,
 )
 from werkzeug.security import generate_password_hash, check_password_hash
-from .models import User
+from .models import User, List
 from . import db
 
 
@@ -28,6 +28,14 @@ def register():
     hashed_password = generate_password_hash(password, method="pbkdf2:sha256")
     new_user = User(username=username, password=hashed_password)
     db.session.add(new_user)
+    db.session.commit()
+
+    todo_list = List(title="Todo", user_id=new_user.id)
+    completed_list = List(title="Completed", user_id=new_user.id)
+
+    db.session.add(todo_list)
+    db.session.add(completed_list)
+
     db.session.commit()
 
     return {"message": "User registered successfully"}, 201
@@ -60,3 +68,28 @@ def logout():
 @login_required
 def get_current_user():
     return {"id": current_user.id, "username": current_user.username}, 200
+
+
+@auth.route("/user", methods=["PUT"])
+@login_required
+def update_user():
+    data = request.get_json()
+    password = data.get("password")
+
+    if not password:
+        return {"message": "No data provided"}, 400
+
+    current_user.password = generate_password_hash(password, method="pbkdf2:sha256")
+
+    db.session.commit()
+
+    return {"message": "User updated successfully"}, 200
+
+
+@auth.route("/user", methods=["DELETE"])
+@login_required
+def delete_user():
+    db.session.delete(current_user)
+    db.session.commit()
+
+    return {"message": "User deleted successfully"}, 200
