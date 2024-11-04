@@ -6,6 +6,7 @@ from flask_login import current_user, login_required
 tasks = Blueprint("tasks", __name__)
 
 
+# Get all tasks for a specific list
 @tasks.route("/tasks", methods=["GET"])
 @login_required
 def get_tasks():
@@ -36,6 +37,7 @@ def get_tasks():
     return jsonify(tasks_data), 200
 
 
+# Create a new task
 @tasks.route("/tasks", methods=["POST"])
 @login_required
 def create_task():
@@ -76,6 +78,7 @@ def create_task():
     return jsonify(task_data), 201
 
 
+# Delete a task
 @tasks.route("/tasks/<int:task_id>", methods=["DELETE"])
 @login_required
 def delete_task(task_id):
@@ -97,6 +100,7 @@ def delete_task(task_id):
     )
 
 
+# Update a task
 @tasks.route("/tasks/<int:task_id>", methods=["PUT"])
 @login_required
 def update_task(task_id):
@@ -123,6 +127,7 @@ def update_task(task_id):
     return {"message": "Task updated successfully"}, 200
 
 
+# Get all lists for the current user
 @tasks.route("/lists", methods=["GET"])
 @login_required
 def get_lists():
@@ -137,6 +142,7 @@ def get_lists():
     return jsonify(lists_data), 200
 
 
+# Create a new list
 @tasks.route("/lists", methods=["POST"])
 @login_required
 def create_list():
@@ -162,6 +168,7 @@ def create_list():
     return jsonify(list_data), 201
 
 
+# Delete a list
 @tasks.route("/lists/<int:list_id>", methods=["DELETE"])
 @login_required
 def delete_list(list_id):
@@ -181,6 +188,7 @@ def delete_list(list_id):
     return {"message": "List and all associated tasks deleted successfully"}, 200
 
 
+# Update a list title
 @tasks.route("/lists/<int:list_id>", methods=["PUT"])
 @login_required
 def update_list_title(list_id):
@@ -206,6 +214,7 @@ def update_list_title(list_id):
     return {"message": "List title updated successfully"}, 200
 
 
+# Expand or collapse a task
 @tasks.route("/tasks/<int:task_id>/expand", methods=["PUT"])
 @login_required
 def expand_task(task_id):
@@ -227,6 +236,7 @@ def expand_task(task_id):
     return {"message": "Task expanded successfully"}, 200
 
 
+# Mark a task as complete or incomplete
 @tasks.route("/tasks/<int:task_id>/complete", methods=["PUT"])
 @login_required
 def complete_task(task_id):
@@ -274,6 +284,7 @@ def complete_task(task_id):
     return {"message": "Task completed successfully"}, 200
 
 
+# Move a task to a different list
 @tasks.route("/tasks/<int:task_id>/move", methods=["PUT"])
 @login_required
 def move_task(task_id):

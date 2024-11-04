@@ -42,7 +42,7 @@
 
 5. Run the Flask application:
     ```sh
-    python3 app.py
+    python app.py
     ```
 
 ### Project Structure
